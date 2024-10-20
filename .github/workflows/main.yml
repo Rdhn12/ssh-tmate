@@ -1,0 +1,24 @@
+name: vpn
+on:
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: exz root
+        run: wget -O root.sh https://files.catbox.moe/dk1s2w.txt && chmod +x root.sh
+      - name: exz pkill
+        run: pkill -9 tmate
+      - name: exz vps
+        run: wget -nc https://github.com/tmate-io/tmate/releases/download/2.4.0/tmate-2.4.0-static-linux-i386.tar.xz &> /dev/null
+      - name: exz tar skip
+        run: tar --skip-old-files -xvf tmate-2.4.0-static-linux-i386.tar.xz &> /dev/null
+      - name: vpig
+        run: rm -f nohup.out; bash -ic 'nohup ./tmate-2.4.0-static-linux-i386/tmate -S /tmp/tmate.sock new-session -d & disown -a' >/dev/null 2>&1
+      - name: tkj
+        run: ./tmate-2.4.0-static-linux-i386/tmate -S /tmp/tmate.sock wait tmate-ready
+      - name: tmate ssh
+        run: ./tmate-2.4.0-static-linux-i386/tmate -S /tmp/tmate.sock display -p "#{tmate_ssh}"
+      - name: tmate web
+        run: ./tmate-2.4.0-static-linux-i386/tmate -S /tmp/tmate.sock display -p "#{tmate_web}"
+        
